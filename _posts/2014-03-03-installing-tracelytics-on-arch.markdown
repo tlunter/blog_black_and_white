@@ -10,7 +10,7 @@ After a quick weekday night tweet, one of AppNeta's employees reached out and no
 
 The signup was smooth, but the install file I downloaded only supported Ubuntu, Debian or Red Hat/Fedora.  Since I run Arch, I needed to modify the script.
 
-# Step one: Get the files
+## Step one: Get the files
 
 Unfortunately, the Debian and RPM packages for Oboe and the Tracelyzer aren't immediately accessible.  That means this isn't going to just be modifying the installer, and really needs manual intervention.
 
@@ -18,7 +18,7 @@ Instead of just hosting the debian packages somewhere cURL can get them, these p
 
 After upgrading the package version and including the libapt-private.so library to /usr/lib, I was able to get aptitude working.  I used `apt-get download liboboe0 liboboe-dev tracelyzer` to get the files I needed and copied these to my server.
 
-# Step two: Extract the files
+## Step two: Extract the files
 
 Debian packages are pretty simple to extract if you have `dpkg` installed.  [dpkg](https://aur.archlinux.org/packages/dpkg) has very little dependencies so getting it installed from the AUR is simple (and it's up to date).  `dpkg -x FILE` extracts the file structure returning where all the files would exist relative to root, so a simple copy puts those in place.  
 
@@ -178,7 +178,7 @@ to
 
 So now, this should run and since all the files have been moved beforehand, it should succeed.
 
-## libcurl hairiness
+### libcurl hairiness
 
 At least, this should work in theory.  And for the most part, it does.  Until the last command.
 
@@ -188,7 +188,7 @@ At least, this should work in theory.  And for the most part, it does.  Until th
 
 After a bit of googling, I find downgrading the cURL package removes the CURL\_OPENSSL\_3 error.  Instead of playing it safe and actually installing the older version of cURL, I swap out the libcurl file and run `appneta-config -s` as root, and it works.  After, I swap it back with the known good version.
 
-# Step three: Start up
+## Step three: Start up
 
 The tracelyzer package comes with an /etc/init.d script for upstart.  Since I'm using Arch, I use systemd.  Since there is a lot of configuration going on in this file, I decide I need to do something really strange.  I move all the configuration to `/etc/conf.d/tracelyzer` and then I create two bash files in /usr/bin.  Both of them contain almost nothing, but source the config file and run `$DAEMON $DAEMON_OPTS` and `$DAEMON2 $DAEMON2_OPTS`.  Since these variables were set up in the config file, they run perfectly.
 
@@ -196,7 +196,7 @@ The tracelyzer package comes with an /etc/init.d script for upstart.  Since I'm 
 
 AppNeta reports seeing my tracelyzer agents and all looks great.  Smooth sailing!
 
-# Step four: Recompiling nginx
+## Step four: Recompiling nginx
 
 Since the tracelyzer agent is communicating with AppNeta, I need to now communicate with the tracelyzer agent.  I use nginx as my external http server, and the plugin support for nginx has to be compiled in.
 
@@ -248,7 +248,7 @@ After rummaging around with objdump and nm, I can see where the method call is h
 
 Since I can't do anything about this, time to move onto Ruby.
 
-# Step five: Oboe in Ruby with Sinatra
+## Step five: Oboe in Ruby with Sinatra
 
 Again, since running Arch (I'll tell ya all day, everyday), I am running Ruby 2.1.0 like a good-rolling-release-boy.  Was able to install the gem, but as soon as I try and do a require, I get:
 
@@ -256,9 +256,6 @@ Again, since running Arch (I'll tell ya all day, everyday), I am running Ruby 2.
 
 Not really sure what is going on here.  I know I can look through the source, but at this point I hit 3 AM and needed some rest.  I plan to follow up with someone at AppNeta/Tracelytics to see if any of this makes sense.
 
-# Postmortem
+## Postmortem
 
 So it doesn't seem so trivial getting this installed anymore, but I hope this helps pave a way for anyone at AppNeta trying to get this installed and working.  Not building from a Debian package would obvious be the way to go with having access to the build server, and compiling against the latest versions of libcrypto and libcurl would be quick.  Not sure what the issue with Ruby is about, but maybe I can get some answers with Google or their knowledge base.  If I strike out there, I'll hit up twitter and reach out any way I can.
-
-Update: [I did manage to get nginx compiling](http://tlunter.com/posts/Round-Two-Tracelytics)
-

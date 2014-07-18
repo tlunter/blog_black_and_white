@@ -4,10 +4,6 @@ title:  "Round Three: Tracelytics"
 date:   2014-03-05 00:58:00
 ---
 
-[[Initial post]](https://tlunter.com/posts/Installing-Tracelytics-on-Arch)
-
-[[Second post]](https://tlunter.com/posts/Round-Two-Tracelytics)
-
 Holy cow!  Welcome back for round three.  I finally got nginx working and that was pretty, but I really wanted Ruby/Rack to also be recording some traces.  Well, it's happening!
 
 ![nginx and Rack traces](https://i.imgur.com/kO1vYH1.png)

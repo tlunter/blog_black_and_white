@@ -4,11 +4,9 @@ title:  "Round Two: Tracelytics"
 date:   2014-03-04 00:58:00
 ---
 
-[[Initial post]](http://tlunter.com/posts/Installing-Tracelytics-on-Arch)
-
 Since I hadn't really finished what I was working on last night, and it's currently Northeastern's Spring Break, I decided to keep going.
 
-# Round Two: Nginx
+## Round Two: Nginx
 
 So, when compiling nginx, I was having an issue with the linking of `RAND_pseudo_bytes@OPENSSL_1.0.0`.  After searching the internet, and figuring out the idea behind versioned symbols, I stumbled across a guy that added these versioned symbols to an older version of OpenSSL.  For whatever reason, I needed to hand compiled OpenSSL with these symbols.  So, I pulled down the PKGBUILD for Arch's OpenSSL, and went to work patching it.  The patch file is:
 
@@ -63,7 +61,7 @@ Seeing as how this is a very generic patch, I hope it will work for quite a bit.
 
 Since this worked just fine, I installed the resulting package, and then running `make` for nginx ran smoothly.
 
-# Now what?
+## Now what?
 
 Now to try and figure out just went wrong with Ruby!
 
