@@ -1,0 +1,12 @@
+# Site settings
+title: Todd Lunter
+email: tlunter@gmail.com
+description: "Simple blog for Todd Lunter."
+baseurl: ""
+url: "https://tlunter.com"
+twitter_username: tlunter
+github_username:  tlunter
+
+# Build settings
+markdown: kramdown
+permalink: pretty
