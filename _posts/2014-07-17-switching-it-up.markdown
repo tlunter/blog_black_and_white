@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title:  "Switching it up"
 date:   2014-07-17 23:27:00
 ---
