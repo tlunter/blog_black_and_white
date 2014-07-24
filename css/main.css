@@ -66,7 +66,9 @@ a:visited { color: #555; }
   line-height: 50px;
 }
 
-.site-header nav a {
+.site-header nav a,
+.site-header nav a:visited {
+  color: #000;
   text-decoration: none;
   display: inline-block;
   width: 80px;
