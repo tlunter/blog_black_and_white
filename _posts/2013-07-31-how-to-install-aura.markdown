@@ -4,11 +4,11 @@ title:  "How To Install aura"
 date:   2013-07-31 23:57:00
 ---
 
-## Prerequisites
+# Prerequisites
 
 If you want to use [aura](https://www.github.com/fosskers/aura), you first have to be using Pacman, the package manager for Archlinux. The easiest way to do that? Just use Arch!  It's my favorite distribution and I'm getting all my friends into it. It's the cool thing to do!
 
-### Now ya got Arch
+## Now ya got Arch
 
 Since you now have Arch, installing aura is kind of funny.  Since it lives on the AUR (Arch User Repository), you can't install it directly through Pacman.  But thanks to some awesome folks, all of the Haskell packages are up-to-date on an unofficial Pacman repository.
 

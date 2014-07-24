@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<div class="home">
+  <ul class="archive">
+    {% for post in site.posts %}
+      <li>
+        <a class="archive-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <span class="archive-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+

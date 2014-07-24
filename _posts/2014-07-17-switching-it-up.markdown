@@ -4,7 +4,7 @@ title:  "Switching it up"
 date:   2014-07-17 23:27:00
 ---
 
-## Goodbye Ruby
+Goodbye Ruby! Hello Jekyll!
 
 Since this a blog and completely static, I'm switching the platform over to jekyll.
 
